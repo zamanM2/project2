@@ -1,13 +1,24 @@
 import React, { Component } from 'react'
 
-export default class MusicMood extends Component {
+export default class MusicForm extends Component {
+    constructor(){
+        super()
+        this.handleInputChange= this.handleInputChange.bind(this)
+    }
+    handleInputChange(event) {
+        
+      console.log("test")
+      
+      
+      }
     render(){
+    
         return(
     
           <div className="artist-search"> Search Your Artist
-          <form onSubmit= {this.props.getMusicdata}>
+          <form onSubmit= {this.props.getmusicData}>
     
-      <input value={this.props.strArtist} onChange={this.props.handleInputChange} type="text" name="ArtistName"/>
+      <input value={this.props.s} onChange={this.props.handleInputChange} type="text" name="ArtistName"/>
       <input type="submit" value="Submit"/>
       </form>
     

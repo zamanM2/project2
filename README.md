@@ -1,3 +1,9 @@
+The purpose of this Application was supposed to be a mood decider of sorts! Ever realise how the weather can alter ones mood? Well I deffinetly understand that, so I have created this all in one applications which lets you check the weather, then depending on the weather you can look up an artists music to set the mood based on the type of weather it is outside, after all that you can even choose to watch a movie which this app can provide data for. This app is great for single person use or even couples who cant deicide on what to do during the different types of settings! The user can enter the zip code for their live location weather data, next enter a artists name they'd like to listen to during the particular type of weather and finally they can do the same for the movie they would like to see!
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

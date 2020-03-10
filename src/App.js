@@ -23,19 +23,13 @@ constructor() {
     zip : "",
     temperature: "",
     isLoaded : false,
-    weatherData: {
+    weatherData: {}
 
-      },
-      s:"",
-      artists: "",
-      musicData:{
-
-      }
-
+         
   }
   this.handleInputChange= this.handleInputChange.bind(this)
   this.getweatherData= this.getweatherData.bind(this)
-  this.getmusicData= this.getmusicData.bind(this)
+
 }
 
 handleInputChange(event) {
@@ -74,52 +68,59 @@ console.log(event.target.value)
 }
 
 
-getmusicData(event) {
-  event.preventDefault()
-  fetch(`theaudiodb.com/api/v1/json/1/search.php?s=${this.state.s}`)
-.then(res => res.json())
-.then(res => {
-  console.log(res);
-  this.setState({
-    isLoaded: true,
-    musicData: {
-    strArtist: res.artists.strArtist,
-    strMood : res.artists.strMood,
-    strBiographyEN: res.artists.strBiographyEN
+// getmusicData(event) {
+//   event.preventDefault()
+//   fetch(`theaudiodb.com/api/v1/json/1/search.php?s=${this.state.s}`)
+// .then(res => res.json())
+// .then(res => {
+ 
+//   console.log(res);
+//   this.setState({
+//     isLoaded: true,
+//     musicData: {
+//     strArtist: res.artists.strArtist,
+//     strMood : res.artists.strMood,
+//     strBiographyEN: res.artists.strBiographyEN
     
-    }
+//     }
+    
+//       })
+//       console.log({res})
 
-      })
+// })
 
-})
-
-}
+// }
 
 
 
 
 
   render() {
+    let onlyForHome =( <div> 
+    <h1> Welcome to the Weather/Mood App! </h1>
+    <WeatherForm
+    /* creating the props here to connect it as a eventhandeler in weatherForm  */
+    handleInputChange={this.handleInputChange}
+    zip={this.state.zip}
+    getweatherData={this.getweatherData}
+     />
+     <WeatherData
+
+
+humidity = {this.state.weatherData.humidity}
+pressure= {this.state.weatherData.pressure}
+name= {this.state.weatherData.name}
+temperature= {this.state.weatherData.temperature}
+
+
+     />
+     </div>
+     )
       return (
         
         <div className="App">
-          <h1> Welcome to the Weather/Mood App! </h1>
-          <WeatherForm
-          /* creating the props here to connect it as a eventhandeler in weatherForm  */
-          handleInputChange={this.handleInputChange}
-          zip={this.state.zip}
-          getweatherData={this.getweatherData}
-           />
-           <WeatherData
-
-
-      humidity = {this.state.weatherData.humidity}
-      pressure= {this.state.weatherData.pressure}
-      name= {this.state.weatherData.name}
-      temperature= {this.state.weatherData.temperature}
-
-
-           />
+          
+         
       
       {/* music portion */}
       {/* <MusicMood
@@ -128,9 +129,9 @@ getmusicData(event) {
         getmusicData={this.getmusicData}
 
 
-      /> 
+      />  */}
  
-      <MusicData 
+      {/* <MusicData 
       
         strArtist={this.state.musicData.strArtist}
         strMood={this.state.musicData.strMood}
@@ -158,19 +159,22 @@ getmusicData(event) {
     </ul>
   </nav>
 
-  {/* A <Switch> looks through its children <Route>s and
-      renders the first one that matches the current URL. */}
+  
   <Switch>
-    <Route path="/Musicmood">
+    <Route path="/MusicMood">
       <MusicMood />
     </Route>
     <Route path="/Activity">
       <Activity />
     </Route>
-    <Route path="/">
+    <Route exact path="/">
+      {onlyForHome}
       <Home />
     </Route>
   </Switch>
+  {/* <Route exact path = "/">
+    
+  </Route> */}
 </div>
 </Router>
 </div>
