@@ -122,7 +122,7 @@ getmusicData(event) {
            />
       
       {/* music portion */}
-      <MusicMood
+      {/* <MusicMood
         handleInputChange={this.handleInputChange}
         s={this.state.s}
         getmusicData={this.getmusicData}
@@ -137,7 +137,7 @@ getmusicData(event) {
         strBiographyEN={this.state.musicData.strBiographyEN}
       
       
-      />
+      /> */}
 
 
       

@@ -37,3 +37,62 @@ code {
   align-items: center;
   
 }
+
+
+body{
+  background: url("http://www.hdwallpaperspulse.com/wp-content/uploads/2016/03/10/beautiful-landscape-background.jpeg");
+  /* background-size:contain; */
+  background-position:top;
+  background: cover;
+  /* background: linear-gradient(90deg, pink 50%, cyan 50%); */
+}
+
+.music{
+  color:purple;
+  height: 100px;
+  background-color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.music-form{
+  color:purple;
+  height: 100px;
+  background-color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul{
+  color:purple;
+  height: 100px;
+  background-color: #333;
+  margin-bottom: 15px;
+  margin-right: 40px;
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artist-search{
+  color:purple;
+  height: 100px;
+  background-color: #333;
+  margin-bottom: 15px;
+  margin-right: 40px;
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
