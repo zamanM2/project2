@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import WeatherForm from './Components/WeatherForm';
 import WeatherData from './Components/WeatherData';
+import Home from './Components/Home';
 import {
   BrowserRouter as Router,
   Switch,
@@ -66,7 +67,7 @@ console.log(event.target.value)
 
   render() {
       return (
-        <
+        
         <div className="App">
           <h1> Welcome to the WeatherApp! </h1>
           <WeatherForm
@@ -86,7 +87,7 @@ console.log(event.target.value)
 
            />
 
-        </div>
+        
 
 
 <Router>
@@ -96,31 +97,31 @@ console.log(event.target.value)
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/about">About</Link>
-      </li>
-      <li>
+      {/* <li>
+        <Link to="/weatherform">Weather</Link>
+      </li> */}
+      {/* <li>
         <Link to="/users">Users</Link>
-      </li>
+      </li> */}
     </ul>
   </nav>
 
   {/* A <Switch> looks through its children <Route>s and
       renders the first one that matches the current URL. */}
   <Switch>
-    <Route path="/about">
+    {/* <Route path="/about">
       <About />
     </Route>
     <Route path="/users">
       <Users />
-    </Route>
+    </Route> */}
     <Route path="/">
       <Home />
     </Route>
   </Switch>
 </div>
 </Router>
-
+</div>
       );
     }
 
