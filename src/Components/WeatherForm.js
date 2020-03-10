@@ -5,7 +5,7 @@ class WeatherForm extends Component {
   render(){
     return(
 
-      <div className="weather-form"> This is the form
+      <div className="weather-form"> Enter Zipcode:
       <form onSubmit= {this.props.getweatherData}>
 
   <input value={this.props.zip} onChange={this.props.handleInputChange} type="text" name="ZipCode"/>

@@ -5,6 +5,7 @@ import WeatherData from './Components/WeatherData';
 import Home from './Components/Home';
 import Activity from './Components/Activity';
 import MusicMood from './Components/MusicMood';
+import MusicData from './Components/MusicData';
 
 import {
   BrowserRouter as Router,
@@ -25,7 +26,8 @@ constructor() {
     weatherData: {
 
       },
-      strArtist:"",
+      s:"",
+      artists: "",
       musicData:{
 
       }
@@ -74,7 +76,7 @@ console.log(event.target.value)
 
 getmusicData(event) {
   event.preventDefault()
-  fetch(`theaudiodb.com/api/v1/json/1/search.php?s=${this.state.strArtist}`)
+  fetch(`theaudiodb.com/api/v1/json/1/search.php?s=${this.state.s}`)
 .then(res => res.json())
 .then(res => {
   console.log(res);
@@ -101,7 +103,7 @@ getmusicData(event) {
       return (
         
         <div className="App">
-          <h1> Welcome to the WeatherApp! </h1>
+          <h1> Welcome to the Weather/Mood App! </h1>
           <WeatherForm
           /* creating the props here to connect it as a eventhandeler in weatherForm  */
           handleInputChange={this.handleInputChange}
@@ -122,14 +124,19 @@ getmusicData(event) {
       {/* music portion */}
       <MusicMood
         handleInputChange={this.handleInputChange}
-        strArtist={this.state.strArtist}
+        s={this.state.s}
         getmusicData={this.getmusicData}
 
 
-        strArtist={this.state.musicData.strArtist};
-        strMood={this.state.musicData.strMood};
-        strBiographyEN={this.state.musicData.strBiographyEN};
-
+      /> 
+ 
+      <MusicData 
+      
+        strArtist={this.state.musicData.strArtist}
+        strMood={this.state.musicData.strMood}
+        strBiographyEN={this.state.musicData.strBiographyEN}
+      
+      
       />
 
 
@@ -140,15 +147,14 @@ getmusicData(event) {
 <div>
   <nav>
     <ul>
-      <li>
+      
         <Link to="/">Home</Link>
-      </li>
-      <li>
+      
+     
         <Link to="/Activity">Activity</Link>
-      </li>
-      <li>
+     
         <Link to="/MusicMood">MusicMood</Link>
-      </li>
+      
     </ul>
   </nav>
 

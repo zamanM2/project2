@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 class WeatherData extends Component{
 render() {
   return(
-    <div>
+    <div className ="weather">
 
-       humidity={this.props.humidity};
-        pressure={this.props.pressure};
-        temperature={this.props.temperature};
-        name={this.props.name};
+       Humidity={this.props.humidity}
+        Pressure={this.props.pressure}
+        Temperature={this.props.temperature}
+        Name={this.props.name}
 
        </div>
 
