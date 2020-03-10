@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import WeatherForm from './Components/WeatherForm';
 
 
 class WeatherForm extends Component {
@@ -7,9 +6,9 @@ class WeatherForm extends Component {
     return(
 
       <div className="weather-form"> This is the form
-      <form >
+      <form onSubmit= {this.props.getweatherData}>
 
-  
+  <input value={this.props.zip} onChange={this.props.handleInputChange} type="text" name="ZipCode"/>
   <input type="submit" value="Submit"/>
   </form>
 
