@@ -3,6 +3,9 @@ import './App.css';
 import WeatherForm from './Components/WeatherForm';
 import WeatherData from './Components/WeatherData';
 import Home from './Components/Home';
+import Activity from './Components/Activity';
+import MusicMood from './Components/MusicMood';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,15 +24,22 @@ constructor() {
     isLoaded : false,
     weatherData: {
 
+      },
+      strArtist:"",
+      musicData:{
+
       }
+
   }
   this.handleInputChange= this.handleInputChange.bind(this)
   this.getweatherData= this.getweatherData.bind(this)
+  this.getmusicData= this.getmusicData.bind(this)
 }
 
 handleInputChange(event) {
   this.setState({
-  zip: event.target.value
+  zip: event.target.value,
+  strArtist: event.target.value
 
 
   })
@@ -62,6 +72,28 @@ console.log(event.target.value)
 }
 
 
+getmusicData(event) {
+  event.preventDefault()
+  fetch(`theaudiodb.com/api/v1/json/1/search.php?s=${this.state.strArtist}`)
+.then(res => res.json())
+.then(res => {
+  console.log(res);
+  this.setState({
+    isLoaded: true,
+    musicData: {
+    strArtist: res.artists.strArtist,
+    strMood : res.artists.strMood,
+    strBiographyEN: res.artists.strBiographyEN
+    
+    }
+
+      })
+
+})
+
+}
+
+
 
 
 
@@ -86,8 +118,22 @@ console.log(event.target.value)
 
 
            />
+      
+      {/* music portion */}
+      <MusicMood
+        handleInputChange={this.handleInputChange}
+        strArtist={this.state.strArtist}
+        getmusicData={this.getmusicData}
 
-        
+
+        strArtist={this.state.musicData.strArtist};
+        strMood={this.state.musicData.strMood};
+        strBiographyEN={this.state.musicData.strBiographyEN};
+
+      />
+
+
+      
 
 
 <Router>
@@ -97,24 +143,24 @@ console.log(event.target.value)
       <li>
         <Link to="/">Home</Link>
       </li>
-      {/* <li>
-        <Link to="/weatherform">Weather</Link>
-      </li> */}
-      {/* <li>
-        <Link to="/users">Users</Link>
-      </li> */}
+      <li>
+        <Link to="/Activity">Activity</Link>
+      </li>
+      <li>
+        <Link to="/MusicMood">MusicMood</Link>
+      </li>
     </ul>
   </nav>
 
   {/* A <Switch> looks through its children <Route>s and
       renders the first one that matches the current URL. */}
   <Switch>
-    {/* <Route path="/about">
-      <About />
+    <Route path="/Musicmood">
+      <MusicMood />
     </Route>
-    <Route path="/users">
-      <Users />
-    </Route> */}
+    <Route path="/Activity">
+      <Activity />
+    </Route>
     <Route path="/">
       <Home />
     </Route>
