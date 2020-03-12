@@ -7,6 +7,7 @@ import Activity from './Components/Activity';
 import MusicMood from './Components/MusicMood';
 import MusicData from './Components/MusicData';
 
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,7 +24,8 @@ constructor() {
     zip : "",
     temperature: "",
     isLoaded : false,
-    weatherData: {}
+    weatherData: {},
+    parkData: [] 
 
          
   }
@@ -65,6 +67,26 @@ console.log(event.target.value)
 
   })
 
+}
+
+
+getParkData() {
+fetch(`https://data.cityofnewyork.us/resource/e4ej-j6hn.json`)
+.then(res => res.json())
+.then(res => {
+  // console.log(res);
+  this.setState({
+    isLoaded: true,
+    parkData: res
+
+      })
+      
+})
+
+}
+
+componentDidMount(){
+  this.getParkData()
 }
 
 
@@ -114,7 +136,10 @@ temperature= {this.state.weatherData.temperature}
 
 
      />
+
      </div>
+  
+
      )
       return (
         
@@ -145,7 +170,7 @@ temperature= {this.state.weatherData.temperature}
 
 
 <Router>
-<div>
+<div className = "nav">
   <nav>
     <ul>
       
@@ -165,7 +190,7 @@ temperature= {this.state.weatherData.temperature}
       <MusicMood />
     </Route>
     <Route path="/Activity">
-      <Activity />
+      <Activity data={this.state.parkData}/>
     </Route>
     <Route exact path="/">
       {onlyForHome}
