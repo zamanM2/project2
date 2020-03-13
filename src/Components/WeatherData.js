@@ -10,6 +10,7 @@ render() {
         Pressure={this.props.pressure}
         Temperature={this.props.temperature}
         Name={this.props.name}
+        {/* Description={this.props.description} */}
 
        </div>
 

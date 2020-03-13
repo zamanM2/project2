@@ -4,8 +4,14 @@ import WeatherForm from './Components/WeatherForm';
 import WeatherData from './Components/WeatherData';
 import Home from './Components/Home';
 import Activity from './Components/Activity';
+import MoodDrink from './Components/MoodDrink';
 import MusicMood from './Components/MusicMood';
-import MusicData from './Components/MusicData';
+// import MusicData from './Components/MusicData';
+import Counting from './Components/Counting';
+import Action from './Components/Action';
+import Roll from 'react-reveal/Roll';
+import { createStore } from 'redux'
+import {Provider} from 'react-redux'
 
 
 import {
@@ -14,6 +20,46 @@ import {
   Route,
   Link
 } from "react-router-dom";
+const initialState ={
+  count:0
+}
+
+function reducer(state = initialState, action){
+  console.log(state, action) 
+  // while(state < 10){
+  //   alert('You seem sad')
+  // }
+  switch(action.type) {
+    case 'MOODUP':
+      return {
+        count: state.count + 1
+      };
+    case 'MOODDOWN':
+      return {
+        count: state.count - 1
+      };
+    case 'RESET':
+      return {
+        count: 0
+      };
+    default:
+      return state;
+  }
+  
+}
+
+
+ // we need to create a store to hold the state.
+const store = createStore(reducer)
+// An action is Redux-speak for a plain object with a property called type.
+// Redux has a built-in function called dispatch. Call it with an action, and Redux will call your reducer
+//  with that action (and then replace the state with whatever your reducer returned).
+store.dispatch({ type: "MOODUP" });
+store.dispatch({ type: "MOODDOWN" });
+store.dispatch({ type: "RESET" });
+console.log(store)
+
+
 
 
 class App extends Component {
@@ -25,7 +71,9 @@ constructor() {
     temperature: "",
     isLoaded : false,
     weatherData: {},
-    parkData: [] 
+    parkData: [],
+    musicData: " ", 
+    drinkData: []
 
          
   }
@@ -60,7 +108,8 @@ console.log(event.target.value)
       temperature: res.main.temp,
       humidity : res.main.humidity,
       pressure: res.main.pressure,
-      name: res.name
+      name: res.name,
+      // description: res
       }
 
         })
@@ -68,6 +117,23 @@ console.log(event.target.value)
   })
 
 }
+
+getDrinkData() {
+  fetch(`https://api.punkapi.com/v2/beers`)
+  .then(res => res.json())
+  .then(res => {
+    console.log(res);
+    this.setState({
+      isLoaded: true,
+      drinkData: res
+  
+        })
+        
+  })
+  
+  }
+  
+  
 
 
 getParkData() {
@@ -87,38 +153,37 @@ fetch(`https://data.cityofnewyork.us/resource/e4ej-j6hn.json`)
 
 componentDidMount(){
   this.getParkData()
+  this.getDrinkData()
 }
 
 
-// getmusicData(event) {
-//   event.preventDefault()
-//   fetch(`theaudiodb.com/api/v1/json/1/search.php?s=${this.state.s}`)
-// .then(res => res.json())
-// .then(res => {
+getmusicData(event) {
+  event.preventDefault()
+  fetch(`theaudiodb.com/api/v1/json/1/search.php?s=${this.state.s}`)
+.then(res => res.json())
+.then(res => {
  
-//   console.log(res);
-//   this.setState({
-//     isLoaded: true,
-//     musicData: {
-//     strArtist: res.artists.strArtist,
-//     strMood : res.artists.strMood,
-//     strBiographyEN: res.artists.strBiographyEN
+  console.log(res);
+  this.setState({
+    isLoaded: true,
+    musicData: {
+    strArtist: res.artists.strArtist,
+    strMood : res.artists.strMood,
+    strBiographyEN: res.artists
     
-//     }
+    }
     
-//       })
-//       console.log({res})
+      })
+      console.log({res})
 
-// })
+})
 
-// }
-
-
+}
 
 
 
-  render() {
-    let onlyForHome =( <div> 
+render() {
+    let onlyForHome =( <div id="container"> 
     <h1> Welcome to the Weather/Mood App! </h1>
     <WeatherForm
     /* creating the props here to connect it as a eventhandeler in weatherForm  */
@@ -142,9 +207,14 @@ temperature= {this.state.weatherData.temperature}
 
      )
       return (
-        
-        <div className="App">
-          
+ 
+
+    <div className="App">
+
+    <Provider store={store}>
+    <Counting />
+    </Provider>
+
          
       
       {/* music portion */}
@@ -180,12 +250,18 @@ temperature= {this.state.weatherData.temperature}
         <Link to="/Activity">Activity</Link>
      
         <Link to="/MusicMood">MusicMood</Link>
+
+        <Link to="/MoodDrink">MoodDrink</Link>
+      
       
     </ul>
   </nav>
 
   
   <Switch>
+  <Route path="/MoodDrink">
+      <MoodDrink data={this.state.drinkData}/>
+    </Route>
     <Route path="/MusicMood">
       <MusicMood />
     </Route>

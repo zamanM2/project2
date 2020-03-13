@@ -30,7 +30,7 @@ step 5: Firebase
 * [React](https://reactjs.org/) - The web framework used
 * [Node Package Mananger](https://docs.npmjs.com/cli/install) - Dependency Management
 ## Author
-* **Mohammad Badruzzaman** - *Initial work* - [Niecey](hhttps://github.com/zamanM2/project2)
+* **Mohammad Badruzzaman** - *Initial work* -(hhttps://github.com/zamanM2/project2)
 ## Deployed Link
  https://mod2-73bf2.firebaseapp.com (Api is working on localhost but not here)
 

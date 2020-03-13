@@ -44,13 +44,34 @@ code {
 }
 
 
-body{
-  background: url("http://www.hdwallpaperspulse.com/wp-content/uploads/2016/03/10/beautiful-landscape-background.jpeg");
+html{
+  /* background: url("https://www.sanvello.com/wp-content/uploads/2019/06/MoodTracking_Spill_2X.jpg"); */
   /* background-size:contain; */
-  background-position:top;
-  background: cover;
+  /* background-position:top; */
+  /* background: cover;
+  height: 1000px;
+  width : 1000px; */
   /* background: linear-gradient(90deg, pink 50%, cyan 50%); */
+  /* background: url(https://www.sanvello.com/wp-content/uploads/2019/06/MoodTracking_Spill_2X.jpg) no-repeat 
+    center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
 }
+.App{
+    background: url(https://www.sanvello.com/wp-content/uploads/2019/06/MoodTracking_Spill_2X.jpg) no-repeat 
+    center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+
+
+
 
 .music{
   color:rgb(128, 0, 53);
@@ -62,6 +83,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 25px;
 }
 
 .music-form{
@@ -74,20 +96,38 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+
+  border-radius: 25px;
 }
 
 ul{
-  color:rgb(128, 0, 53);
+  color:rgb(128, 115, 0);
   height: 100px;
   background-color: #333;
-  margin-bottom: 15px;
+  margin-bottom:20px;
   margin-right: 40px;
   text-align: center;
   font-size: 30px;
-  display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 25px;
+ 
 }
+
+.mood{
+  color:rgb(128, 115, 0);
+  height: 100px;
+  /* background-color: #333; */
+  margin-bottom:800px;
+  margin-right: 40px;
+  text-align: center;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+ 
+}
+
 
 .artist-search{
   color:rgb(128, 0, 53);
@@ -100,6 +140,7 @@ ul{
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 25px;
 }
 
 h1{
@@ -107,4 +148,5 @@ h1{
   color:rgb(4, 128, 0);
   height: 100px;
   background-color: #333;
+  border-radius: 25px;
 }
