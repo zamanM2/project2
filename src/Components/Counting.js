@@ -49,4 +49,6 @@ class Counting extends React.Component {
     }
 }
 
+
+
 export default connect(mapStateToProps)(Counting);

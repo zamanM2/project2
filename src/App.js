@@ -6,7 +6,7 @@ import Home from './Components/Home';
 import Activity from './Components/Activity';
 import MoodDrink from './Components/MoodDrink';
 import MusicMood from './Components/MusicMood';
-// import MusicData from './Components/MusicData';
+import MusicData from './Components/MusicData';
 import Counting from './Components/Counting';
 import Action from './Components/Action';
 import Roll from 'react-reveal/Roll';
@@ -20,10 +20,13 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 const initialState ={
   count:0
 }
 
+//this is a reducer- its basically handeling the logic of an action that I have set up
+//i.e my actions are to add 1 or decrese 1 for the counter on my mood counter 
 function reducer(state = initialState, action){
   console.log(state, action) 
   // while(state < 10){
@@ -183,6 +186,7 @@ getmusicData(event) {
 
 
 render() {
+  
     let onlyForHome =( <div id="container"> 
     <h1> Welcome to the Weather/Mood App! </h1>
     <WeatherForm
@@ -210,7 +214,7 @@ temperature= {this.state.weatherData.temperature}
  
 
     <div className="App">
-
+    {/* provider wraps all my things that I want redux to apply to */}
     <Provider store={store}>
     <Counting />
     </Provider>

@@ -68,6 +68,26 @@ html{
   background-size: cover;
 }
 
+.gradient{
+  background: url(https://a-e-mag.com/sites/default/files/styles/full_width/public/features/gradient.jpg?itok=H7jzRQRr) no-repeat 
+    center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+.basketball{
+  background: url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/basketball-court-at-sunset-matt-harang.jpg) no-repeat 
+  center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+
+
+}
 
 
 

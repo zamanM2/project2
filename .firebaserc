@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "mod2-73bf2"
+    "default": "weatherp2",
+    "weather": "weatherp2"
   }
 }

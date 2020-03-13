@@ -8,7 +8,7 @@ export default class MoodDrink extends Component {
 
             return (
                 
-                <div>
+                <div className = "gradient">
                   {data.map((a,i) => {
                     return (
                         <Roll>
